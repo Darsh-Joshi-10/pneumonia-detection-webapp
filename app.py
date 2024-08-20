@@ -12,7 +12,16 @@ model = load_model(os.path.join('model', 'pneumonia_detection_model.h5'))
 
 # Define the path to save uploaded images
 UPLOAD_FOLDER = 'static/uploads/'
+PNEUMONIA_FOLDER = 'static/pneumonia_images/'
+NORMAL_FOLDER = 'static/normal_images/'
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['PNEUMONIA_FOLDER'] = PNEUMONIA_FOLDER
+app.config['NORMAL_FOLDER'] = NORMAL_FOLDER
+
+# Create directories if they don't exist
+os.makedirs(PNEUMONIA_FOLDER, exist_ok=True)
+os.makedirs(NORMAL_FOLDER, exist_ok=True)
 
 # Function to make prediction
 def predict_pneumonia(img_path):
@@ -42,8 +51,18 @@ def index():
             # Make prediction
             prediction = predict_pneumonia(filepath)
 
+            # Determine the correct folder based on prediction
+            if prediction == 'Pneumonia':
+                save_folder = app.config['PNEUMONIA_FOLDER']
+            else:
+                save_folder = app.config['NORMAL_FOLDER']
+
+            # Move the file to the appropriate folder
+            new_filepath = os.path.join(save_folder, file.filename)
+            os.rename(filepath, new_filepath)
+
             # Render the result page
-            return render_template('result.html', prediction=prediction, img_path=filepath)
+            return render_template('result.html', prediction=prediction, img_path=new_filepath)
     return render_template('index.html')
 
 # Run the app
