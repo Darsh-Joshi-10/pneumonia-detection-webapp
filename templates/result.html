@@ -6,8 +6,8 @@
     <title>Prediction Result</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e2e2e2, #c9c9c9);
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,47 +18,53 @@
 
         .container {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
             text-align: center;
-            width: 350px;
+            width: 380px;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h2 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         p {
-            font-size: 18px;
+            font-size: 19px;
             color: #555;
-            margin: 20px 0;
+            margin: 22px 0;
         }
 
         .prediction-result {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: #007BFF;
         }
 
         img {
-            margin-top: 20px;
+            margin-top: 22px;
             max-width: 100%;
             height: auto;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 25px;
             background-color: #007BFF;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 17px;
             transition: background-color 0.3s;
         }
 
@@ -67,9 +73,9 @@
         }
 
         .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #888;
         }
     </style>
 </head>
@@ -78,7 +84,7 @@
         <h2>Prediction Result</h2>
         <p>The uploaded X-ray is classified as:</p>
         <p class="prediction-result">{{ prediction }}</p>
-        <img src="{{ url_for('static', filename='uploads/' + img_path.split('/')[-1]) }}" alt="Uploaded X-ray">
+        <img src="{{ url_for('static', filename=img_path.split('static/')[1]) }}" alt="Uploaded X-ray">
         <a class="back-link" href="{{ url_for('index') }}">Upload Another X-ray</a>
         <div class="footer">
             <p>Powered by AI | Flask Web App</p>

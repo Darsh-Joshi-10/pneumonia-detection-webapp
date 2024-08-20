@@ -6,8 +6,8 @@
     <title>Pneumonia Detection</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e2e2e2, #c9c9c9);
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,38 +18,44 @@
 
         .container {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
             text-align: center;
-            width: 350px;
+            width: 380px;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h2 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         input[type="file"] {
             display: block;
-            margin: 10px auto 20px;
-            padding: 5px;
-            border-radius: 5px;
+            margin: 12px auto 25px;
+            padding: 7px;
+            border-radius: 6px;
             border: 1px solid #ddd;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
-            background-color: #fafafa;
-            width: 80%;
+            background-color: #f7f7f7;
+            width: 85%;
         }
 
         input[type="submit"] {
             background-color: #007BFF;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 17px;
             transition: background-color 0.3s;
         }
 
@@ -58,18 +64,18 @@
         }
 
         #imagePreview {
-            margin-top: 20px;
+            margin-top: 25px;
             display: none;
             max-width: 100%;
             height: auto;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #888;
         }
     </style>
 </head>
@@ -82,7 +88,7 @@
             <input type="submit" value="Upload and Predict">
         </form>
         <div class="footer">
-            <p>Powered by AI | Flask Web App</p>
+            <p>The Web app is accurate 90% of the time. Consult a Doctor for proper diagnosis.</p>
         </div>
     </div>
 
